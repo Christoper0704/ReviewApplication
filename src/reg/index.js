@@ -82,7 +82,7 @@ const Reg = (props) => {
                         </span>
                     </div> 
                     <div className="flex items-center w-full pt-4 mb-4">
-                        <button className="w-full py-3 text-base transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blue-800" style={{backgroundColor: "#D2E9E9"}} onSubmit={{submitRegister}}>CREATE</button>
+                        <button className="w-full py-3 text-base transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blue-800" style={{backgroundColor: "#D2E9E9"}} onSubmit={submitRegister}>CREATE</button>
                     </div>
                     <div className="m-auto text-sm text-slate-500 hover:text-blue-600">
                         <a href="/login"  >Have an account? Login here.</a>

@@ -4,7 +4,9 @@ import { Link, Navigate, useNavigate  } from 'react-router-dom';
 
 import profileUser from '../images/profile.png';
 
-const Main = () => {
+import { HiArrowLeft } from "react-icons/hi2";
+
+const Qst = () => {
     let navigate = useNavigate();
     const [navbar, setNavbar] = useState(false);
 
@@ -14,12 +16,15 @@ const Main = () => {
                 <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
                     <div>
                         <div className="flex items-center justify-between py-3 md:py-5 mr-3">
+                        <a href="/forum" className="mr-3 text-2xl">
+                                <HiArrowLeft />
+                            </a>
                             <a href="/" className="flex items-center">
                                 <img className="h-8 mr-3"  src={profileUser} alt="User" />
                                 <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">User A <br/> Junior ITS</span>
                             </a>
                         <p className="text-xl font-semibold justify-center items-center mx-10">
-                                FORUM
+                                QUESTIONNAIRE
                         </p>
                         <div className="md:hidden">
                             <button className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border" onClick={() => setNavbar(!navbar)}>
@@ -74,48 +79,22 @@ const Main = () => {
                 </div>
             </div>
         </nav>  
-            {/* <nav className="border-gray-200 dark:bg-gray-900" style={{backgroundColor: "#F8F6F4"}}>
-                <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                    <a href="#" className="flex items-center">
-                        <img className="h-8 mr-3"  src={profileUser} alt="User" />
-                        <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">User A <br/> Junior ITS</span>
-                    </a>
-                    <p className="justify-center items-center mx-auto text-xl font-semibold">FORUM</p>
-                </div>
-            </nav> */}
-            {/* <div className="flex items-center px-6 pt-4 mb-4 mx-auto">
-                <button className="w-full py-3 text-base transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blue-800" style={{backgroundColor: "#D2E9E9"}}>CREATE NEW</button>
-            </div> */}
             <div className="container my-12 mx-auto px-4 md:px-12">
-                <div className="flex flex-wrap -mx-1 lg:-mx-4">
-                    <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-                        <a className="no-underline text-black transform transition duration-500 hover:scale-110" href="/forum">
-                            <article className="overflow-hidden rounded-lg shadow-lg" style={{backgroundColor: "#D2E9E9"}}>
-                                <header className="flex items-center justify-between leading-tight p-2 md:p-4">
-                                    <h1 className="text-lg mx-auto">
-                                        IT Support
-                                    </h1>
-                                </header>
-                            </article>
-                        </a>
-                    </div>
+                <h3>Buatlah pertanyaan-pertanyaan untuk kuesioner penilaian terhadap karyawan. Penilaian disusun berdasarkan masing-masing user dan dilakukan dengan memberikan nilai dengan rentang 1 hingga 5 dengan ketentuan sebagai berikut. </h3>
+                <h3>1: Sangat Tidak Setuju, 2: Tidak Setuju, 3: Cukup Setuju, 4: Setuju, 5: Sangat Setuju </h3>
+                <div class="mb-6 mt-2">
+                    <input type="text" id="default-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Input Question" />
+                </div>
 
-                    <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-                        <a className="no-underline text-black transform transition duration-500 hover:scale-110" href="#">
-                            <article className="overflow-hidden rounded-lg shadow-lg" style={{backgroundColor: "#D2E9E9"}}>
-                                <header className="flex items-center justify-between leading-tight p-2 md:p-4">
-                                    <h1 className="text-lg mx-auto">
-                                        + Add New Forum
-                                    </h1>
-                                </header>
-                            </article>
-                        </a>
-                    </div>
-            </div>
+                <div className="space-x-2 md:inline-block mt-2">
+                    <button className="px-4 py-2 rounded-md shadow hover:bg-gray-100" style={{backgroundColor: "#D2E9E9"}}>
+                        Add Question
+                    </button>
+                </div>
      </div>
 </div>
         
     );
 };
 
-export default Main;
+export default Qst;

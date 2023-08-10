@@ -4,22 +4,27 @@ import { Link, Navigate, useNavigate  } from 'react-router-dom';
 
 import profileUser from '../images/profile.png';
 
-const Main = () => {
+import { HiArrowLeft } from 'react-icons/hi2';
+
+const ReviewView = () => {
     let navigate = useNavigate();
     const [navbar, setNavbar] = useState(false);
 
     return(
-        <div>
-            <nav className="w-full bg-purple-500 shadow" style={{backgroundColor: "#F8F6F4"}}>
+        <div>  
+           <nav className="w-full bg-purple-500 shadow" style={{backgroundColor: "#F8F6F4"}}>
                 <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
                     <div>
-                        <div className="flex items-center justify-between py-3 md:py-5 mr-3">
+                        <div className="flex items-center justify-between py-3 md:py-5">
+                            <a href="/forum" className="mr-3 text-2xl">
+                                <HiArrowLeft />
+                            </a>
                             <a href="/" className="flex items-center">
                                 <img className="h-8 mr-3"  src={profileUser} alt="User" />
                                 <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">User A <br/> Junior ITS</span>
                             </a>
-                        <p className="text-xl font-semibold justify-center items-center mx-10">
-                                FORUM
+                        <p className="mx-auto text-xl font-semibold justify-center items-center mx-10">
+                                KUESIONER PENILAIAN
                         </p>
                         <div className="md:hidden">
                             <button className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border" onClick={() => setNavbar(!navbar)}>
@@ -73,49 +78,61 @@ const Main = () => {
                     </a>
                 </div>
             </div>
-        </nav>  
-            {/* <nav className="border-gray-200 dark:bg-gray-900" style={{backgroundColor: "#F8F6F4"}}>
-                <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                    <a href="#" className="flex items-center">
-                        <img className="h-8 mr-3"  src={profileUser} alt="User" />
-                        <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">User A <br/> Junior ITS</span>
-                    </a>
-                    <p className="justify-center items-center mx-auto text-xl font-semibold">FORUM</p>
-                </div>
-            </nav> */}
+        </nav>
             {/* <div className="flex items-center px-6 pt-4 mb-4 mx-auto">
-                <button className="w-full py-3 text-base transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blue-800" style={{backgroundColor: "#D2E9E9"}}>CREATE NEW</button>
+                <h1>Belum Ada Hasil Review yang Masuk.</h1>
             </div> */}
-            <div className="container my-12 mx-auto px-4 md:px-12">
-                <div className="flex flex-wrap -mx-1 lg:-mx-4">
-                    <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-                        <a className="no-underline text-black transform transition duration-500 hover:scale-110" href="/forum">
-                            <article className="overflow-hidden rounded-lg shadow-lg" style={{backgroundColor: "#D2E9E9"}}>
-                                <header className="flex items-center justify-between leading-tight p-2 md:p-4">
-                                    <h1 className="text-lg mx-auto">
-                                        IT Support
-                                    </h1>
-                                </header>
-                            </article>
-                        </a>
-                    </div>
+            <div className="flex justify-center min-h-screen p-10">
+                <div className="md:w-3/5 w-3/4 px-10 flex flex-col gap-2 p-5 text-black">
+                    <div className="flex flex-col gap-3 mt-14">
+                        <div className="flex flex-col gap-4 p-4" style={{backgroundColor: "#D2E9E9"}}>
+                            <div className="flex justify justify-between">
+                                <div className="flex gap-2">
+                                    <img src={profileUser} className="w-7 h-7" alt="Anonymous"/>
+                                    <span>Anonymous</span>
+                                </div>
+                            </div>
 
-                    <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-                        <a className="no-underline text-black transform transition duration-500 hover:scale-110" href="#">
-                            <article className="overflow-hidden rounded-lg shadow-lg" style={{backgroundColor: "#D2E9E9"}}>
-                                <header className="flex items-center justify-between leading-tight p-2 md:p-4">
-                                    <h1 className="text-lg mx-auto">
-                                        + Add New Forum
-                                    </h1>
-                                </header>
-                            </article>
-                        </a>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                                <div>Keterampilan: 4</div>
+                                <div>Inisiatif: 4</div>
+                                <div>Produktivitas: 3</div>
+                                <div>Kehadiran: 5</div>
+                                <div>Komunikasi: 4</div>
+                                <div>Fokus: 5</div>
+                            </div>
+
+                            <div className="flex justify-between">
+                                Saran atau Kritik: Tingkatkan kinerja!!
+                            </div>
+                        </div>
+                        <div className="flex flex-col gap-4 p-4" style={{backgroundColor: "#D2E9E9"}}>
+                            <div className="flex justify justify-between">
+                                <div className="flex gap-2">
+                                    <img src={profileUser} className="w-7 h-7" alt="Anonymous"/>
+                                    <span>Anonymous</span>
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                                <div>Keterampilan: 4</div>
+                                <div>Inisiatif: 4</div>
+                                <div>Produktivitas: 3</div>
+                                <div>Kehadiran: 5</div>
+                                <div>Komunikasi: 4</div>
+                                <div>Fokus: 5</div>
+                            </div>
+
+                            <div className="flex justify-between">
+                                Saran atau Kritik: Tingkatkan kinerja!!
+                            </div>
+                        </div>        
                     </div>
+                </div>
             </div>
-     </div>
-</div>
+        </div>
         
     );
 };
 
-export default Main;
+export default ReviewView;

@@ -6,6 +6,9 @@ import Login from './login/index';
 import Reg from './reg/index';
 import Main from './main';
 import Forum from './forum';
+import Qst from './questionnaire';
+import Review from './review';
+import ReviewView from './reviewView';
 
 function App() {
   return (
@@ -16,6 +19,9 @@ function App() {
           <Route path="/register" element={<Reg />} />
           <Route path='/main' element={<Main />} />
           <Route path='/forum' element={<Forum />} />
+          <Route path='/qst' element={<Qst />} />
+          <Route path='/review' element={<Review />} />
+          <Route path='/viewreview' element={<ReviewView />} />
       </Routes>
     </BrowserRouter>
   );

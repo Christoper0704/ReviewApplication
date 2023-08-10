@@ -4,22 +4,27 @@ import { Link, Navigate, useNavigate  } from 'react-router-dom';
 
 import profileUser from '../images/profile.png';
 
-const Main = () => {
+import { HiArrowLeft } from "react-icons/hi2";
+
+const Review = () => {
     let navigate = useNavigate();
     const [navbar, setNavbar] = useState(false);
 
     return(
-        <div>
+        <div>  
             <nav className="w-full bg-purple-500 shadow" style={{backgroundColor: "#F8F6F4"}}>
                 <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
                     <div>
-                        <div className="flex items-center justify-between py-3 md:py-5 mr-3">
+                        <div className="flex items-center justify-between py-3 md:py-5">
+                            <a href="/forum" className="mr-3 text-2xl">
+                                <HiArrowLeft />
+                            </a>
                             <a href="/" className="flex items-center">
                                 <img className="h-8 mr-3"  src={profileUser} alt="User" />
                                 <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">User A <br/> Junior ITS</span>
                             </a>
-                        <p className="text-xl font-semibold justify-center items-center mx-10">
-                                FORUM
+                        <p className="mx-auto text-xl font-semibold justify-center items-center ml-10">
+                                KUESIONER PENILAIAN
                         </p>
                         <div className="md:hidden">
                             <button className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border" onClick={() => setNavbar(!navbar)}>
@@ -73,49 +78,52 @@ const Main = () => {
                     </a>
                 </div>
             </div>
-        </nav>  
-            {/* <nav className="border-gray-200 dark:bg-gray-900" style={{backgroundColor: "#F8F6F4"}}>
-                <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                    <a href="#" className="flex items-center">
-                        <img className="h-8 mr-3"  src={profileUser} alt="User" />
-                        <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">User A <br/> Junior ITS</span>
-                    </a>
-                    <p className="justify-center items-center mx-auto text-xl font-semibold">FORUM</p>
-                </div>
-            </nav> */}
+        </nav>
             {/* <div className="flex items-center px-6 pt-4 mb-4 mx-auto">
                 <button className="w-full py-3 text-base transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blue-800" style={{backgroundColor: "#D2E9E9"}}>CREATE NEW</button>
             </div> */}
             <div className="container my-12 mx-auto px-4 md:px-12">
-                <div className="flex flex-wrap -mx-1 lg:-mx-4">
-                    <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-                        <a className="no-underline text-black transform transition duration-500 hover:scale-110" href="/forum">
-                            <article className="overflow-hidden rounded-lg shadow-lg" style={{backgroundColor: "#D2E9E9"}}>
-                                <header className="flex items-center justify-between leading-tight p-2 md:p-4">
-                                    <h1 className="text-lg mx-auto">
-                                        IT Support
-                                    </h1>
-                                </header>
-                            </article>
-                        </a>
+                <div className="flex items-center mb-10">
+                    <img className="h-8 mr-3"  src={profileUser} alt="User" />
+                    <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">User B - Manager</span>
+                </div>
+                <h3>Berikan rating penilaian untuk setiap pertanyaan berikut. Berikut ketentuan dari setiap angka penilaian yang ada. </h3>
+                <h3 className="mb-2">1: Sangat Tidak Setuju, 2: Tidak Setuju, 3: Cukup Setuju, 4: Setuju, 5: Sangat Setuju </h3>
+                <h3 className="mb-2">1. Memiliki kepemimpinan yang baik dalam mengelola tim?</h3>
+                
+                <div class="flex">
+                    <div class="flex items-center mr-4">
+                        <input id="1.1" type="radio" value="" name="inline-radio-group" class="w-4 h-4 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                        <label for="1.1" class="ml-2 text-sm font-medium dark:text-gray-300">1</label>
                     </div>
+                    <div class="flex items-center mr-4">
+                        <input id="1.2" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                        <label for="1.2" class="ml-2 text-sm font-medium dark:text-gray-300">2</label>
+                    </div>
+                    <div class="flex items-center mr-4">
+                        <input id="inline-checked-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                        <label for="inline-checked-radio" class="ml-2 text-sm font-medium dark:text-gray-300">3</label>
+                    </div>
+                    <div class="flex items-center mr-4">
+                        <input id="1.4" type="radio" value="" name="inline-radio-group" class="w-4 h-4 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                        <label for="1.4" class="ml-2 text-sm font-medium dark:text-gray-300">4</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input id="1.5" type="radio" value="" name="inline-radio-group" class="w-4 h-4 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                        <label for="1.5" class="ml-2 text-sm font-medium dark:text-gray-300">5</label>
+                    </div>
+                </div>
 
-                    <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-                        <a className="no-underline text-black transform transition duration-500 hover:scale-110" href="#">
-                            <article className="overflow-hidden rounded-lg shadow-lg" style={{backgroundColor: "#D2E9E9"}}>
-                                <header className="flex items-center justify-between leading-tight p-2 md:p-4">
-                                    <h1 className="text-lg mx-auto">
-                                        + Add New Forum
-                                    </h1>
-                                </header>
-                            </article>
-                        </a>
-                    </div>
+                <textarea id="message" rows="4" class="block p-2.5 mt-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Kritik, Saran, atau Komentar Lainnya..."></textarea>
+                <div className="space-x-2 md:inline-block mt-2">
+                    <button className="px-4 py-2 rounded-md shadow hover:bg-gray-100" style={{backgroundColor: "#D2E9E9"}}>
+                        Done
+                    </button>
+                </div>
             </div>
-     </div>
-</div>
+        </div>
         
     );
 };
 
-export default Main;
+export default Review;
