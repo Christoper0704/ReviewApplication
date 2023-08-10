@@ -1,11 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
+import { Routes, Route, Link, useLocation, BrowserRouter } from "react-router-dom";
+
+import Login from './login/index';
+import Reg from './reg/index';
+import Main from './main';
+import Forum from './forum';
 
 function App() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <BrowserRouter>
+      <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Reg />} />
+          <Route path='/main' element={<Main />} />
+          <Route path='/forum' element={<Forum />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
