@@ -27,7 +27,7 @@ const Login = (props) => {
     const [loading, setLoading] = useState(false);
 
     const submitLogin = () => {
-        navigate('/forum');
+        navigate('/main');
     }
 
     return(

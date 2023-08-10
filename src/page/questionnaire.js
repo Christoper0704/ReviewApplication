@@ -80,7 +80,7 @@ const Qst = () => {
             </div>
         </nav>  
             <div className="container my-12 mx-auto px-4 md:px-12">
-                <h3>Buatlah pertanyaan-pertanyaan untuk kuesioner penilaian terhadap karyawan. Penilaian disusun berdasarkan masing-masing user dan dilakukan dengan memberikan nilai dengan rentang 1 hingga 5 dengan ketentuan sebagai berikut. </h3>
+                <h3>Buatlah pertanyaan-pertanyaan untuk kuesioner penilaian terhadap karyawan. Penilaian disusun di dalam forum dan dilakukan dengan memberikan nilai yang memiliki rentang 1 hingga 5 dengan ketentuan sebagai berikut. </h3>
                 <h3>1: Sangat Tidak Setuju, 2: Tidak Setuju, 3: Cukup Setuju, 4: Setuju, 5: Sangat Setuju </h3>
                 <div class="mb-6 mt-2">
                     <input type="text" id="default-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Input Question" />

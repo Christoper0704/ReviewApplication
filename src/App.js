@@ -2,13 +2,13 @@ import logo from './logo.svg';
 import './App.css';
 import { Routes, Route, Link, useLocation, BrowserRouter } from "react-router-dom";
 
-import Login from './login/index';
-import Reg from './reg/index';
-import Main from './main';
-import Forum from './forum';
-import Qst from './questionnaire';
-import Review from './review';
-import ReviewView from './reviewView';
+import Login from './page/login';
+import Reg from './page/reg';
+import Main from './page/main';
+import Forum from './page/forum';
+import Qst from './page/questionnaire';
+import Review from './page/review';
+import ReviewView from './page/reviewview';
 
 function App() {
   return (

@@ -31,7 +31,7 @@ const Reg = (props) => {
     const [loading, setLoading] = useState(false);
 
     const submitRegister = () => {
-        navigate("/forum");
+        navigate('/main');
     }
 
     return(
