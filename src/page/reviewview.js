@@ -23,7 +23,7 @@ const ReviewView = () => {
                                 <img className="h-8 mr-3"  src={profileUser} alt="User" />
                                 <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">User A <br/> Junior ITS</span>
                             </a>
-                        <p className="mx-auto text-xl font-semibold justify-center items-center mx-10">
+                        <p className="text-xl font-semibold justify-center items-center mx-10">
                                 KUESIONER PENILAIAN
                         </p>
                         <div className="md:hidden">
@@ -94,12 +94,12 @@ const ReviewView = () => {
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                                <div>Keterampilan: 4</div>
-                                <div>Inisiatif: 4</div>
-                                <div>Produktivitas: 3</div>
-                                <div>Kehadiran: 5</div>
-                                <div>Komunikasi: 4</div>
-                                <div>Fokus: 5</div>
+                                <div>Pencapaian: 90%</div>
+                                <div></div>
+                                <div>Target: 75%</div>
+                                <div></div>
+                                <div>Lorem Ipsum Lorem Ipsum Lorem Ipsum</div>
+                                <div></div>
                             </div>
 
                             <div className="flex justify-between">
@@ -115,12 +115,12 @@ const ReviewView = () => {
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                                <div>Keterampilan: 4</div>
-                                <div>Inisiatif: 4</div>
-                                <div>Produktivitas: 3</div>
-                                <div>Kehadiran: 5</div>
-                                <div>Komunikasi: 4</div>
-                                <div>Fokus: 5</div>
+                                <div>Pencapaian: 90%</div>
+                                <div></div>
+                                <div>Target: 75%</div>
+                                <div></div>
+                                <div>Lorem Ipsum Lorem Ipsum Lorem Ipsum</div>
+                                <div></div>
                             </div>
 
                             <div className="flex justify-between">

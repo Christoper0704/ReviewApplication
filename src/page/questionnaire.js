@@ -6,12 +6,27 @@ import profileUser from '../images/profile.png';
 
 import { HiArrowLeft } from "react-icons/hi2";
 
+const InputField = () => {
+    return <input type="text" id="default-input" class="mt-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Input Question" />
+};
+
 const Qst = () => {
     let navigate = useNavigate();
     const [navbar, setNavbar] = useState(false);
+    // const [addQst, setAddQst] = useState([]);
+
+    // const onAddQstClick = () => {
+    //     setAddQst(addQst.concat(<InputField key={addQst.length}/>));
+    // };
+
+    const initialQuestionnaireState = {
+        qstid: null,
+        pertanyaan: "",
+    }
+    const [questionnaire, setQuestionnaire] = useState(initialQuestionnaireState);
 
     return(
-        <div>
+        <>
             <nav className="w-full bg-purple-500 shadow" style={{backgroundColor: "#F8F6F4"}}>
                 <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
                     <div>
@@ -80,10 +95,11 @@ const Qst = () => {
             </div>
         </nav>  
             <div className="container my-12 mx-auto px-4 md:px-12">
-                <h3>Buatlah pertanyaan-pertanyaan untuk kuesioner penilaian terhadap karyawan. Penilaian disusun di dalam forum dan dilakukan dengan memberikan nilai yang memiliki rentang 1 hingga 5 dengan ketentuan sebagai berikut. </h3>
+                <h3>Buatlah pertanyaan-pertanyaan untuk kuesioner penilaian terhadap karyawan. <strong>Pastikan setiap pertanyaan sudah sesuai sebelum menekan tombol "Add Question"</strong> Penilaian disusun di dalam forum dan dilakukan dengan memberikan nilai yang memiliki rentang 1 hingga 5 dengan ketentuan sebagai berikut. </h3>
                 <h3>1: Sangat Tidak Setuju, 2: Tidak Setuju, 3: Cukup Setuju, 4: Setuju, 5: Sangat Setuju </h3>
                 <div class="mb-6 mt-2">
-                    <input type="text" id="default-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Input Question" />
+                    {/* {addQst} */}
+                    <input type="text" id="question" value="question" class="mt-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Input Question" />
                 </div>
 
                 <div className="space-x-2 md:inline-block mt-2">
@@ -91,8 +107,8 @@ const Qst = () => {
                         Add Question
                     </button>
                 </div>
-     </div>
-</div>
+            </div>
+</>
         
     );
 };

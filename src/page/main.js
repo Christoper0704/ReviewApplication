@@ -7,6 +7,7 @@ import profileUser from '../images/profile.png';
 const Main = () => {
     let navigate = useNavigate();
     const [navbar, setNavbar] = useState(false);
+    const [modalForum, setModalForum] = useState(false);
 
     return(
         <div>

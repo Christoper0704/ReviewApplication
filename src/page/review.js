@@ -23,7 +23,7 @@ const Review = () => {
                                 <img className="h-8 mr-3"  src={profileUser} alt="User" />
                                 <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">User A <br/> Junior ITS</span>
                             </a>
-                        <p className="mx-auto text-xl font-semibold justify-center items-center ml-10">
+                        <p className="text-xl font-semibold justify-center items-center ml-10">
                                 KUESIONER PENILAIAN
                         </p>
                         <div className="md:hidden">
@@ -114,7 +114,7 @@ const Review = () => {
                     </div>
                 </div>
 
-                <textarea id="message" rows="4" class="block p-2.5 mt-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Kritik, Saran, atau Komentar Lainnya..."></textarea>
+                <textarea maxLength="255" id="message" rows="4" class="block p-2.5 mt-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Kritik, Saran, atau Komentar Lainnya..."></textarea>
                 <div className="space-x-2 md:inline-block mt-2">
                     <button className="px-4 py-2 rounded-md shadow hover:bg-gray-100" style={{backgroundColor: "#D2E9E9"}}>
                         Done
