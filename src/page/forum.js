@@ -14,6 +14,13 @@ const Forum = () => {
         navigate('/review');
     }
 
+    const logout = () => {
+        localStorage.clear();
+        window.location.reload();
+    }
+
+    const getRole = localStorage.getItem("role");
+
     return(
         <>
             <nav className="w-full bg-purple-500 shadow" style={{backgroundColor: "#F8F6F4"}}>
@@ -77,13 +84,18 @@ const Forum = () => {
                             <a href="/viewreview" className="inline-block w-full px-4 py-2 text-center rounded-md shadow hover:bg-gray-800" style={{backgroundColor: "#D2E9E9"}}>
                                 View Review
                             </a>
-                            <a href="#" className="inline-block w-full px-4 py-2 text-center rounded-md shadow hover:bg-gray-800" style={{backgroundColor: "#D2E9E9"}} onClick={() => setShowModalUser(true)}>
-                                Add User
-                            </a>
-                            <a href="/qst" className="inline-block w-full px-4 py-2 text-center text-gray-800 rounded-md shadow hover:bg-gray-100" style={{backgroundColor: "#D2E9E9"}}>
-                                Add Questionnaire
-                            </a>
-                            <a href="/" className="px-4 py-2 text-white font-semibold rounded-md shadow hover:bg-gray-100" style={{backgroundColor: "#F24C3D"}}>
+                            
+                            {getRole === "manager" ?
+                            <>
+                                <a href="#" className="inline-block w-full px-4 py-2 text-center rounded-md shadow hover:bg-gray-800" style={{backgroundColor: "#D2E9E9"}} onClick={() => setShowModalUser(true)}>
+                                    Add User
+                                </a>
+                                <a href="/qst" className="inline-block w-full px-4 py-2 text-center text-gray-800 rounded-md shadow hover:bg-gray-100" style={{backgroundColor: "#D2E9E9"}}>
+                                    Add Questionnaire
+                                </a>
+                            </>
+                            : <></> }
+                            <a href="/" className="inline-block w-full px-4 py-2 text-white text-center font-semibold rounded-md shadow hover:bg-gray-100" style={{backgroundColor: "#F24C3D"}} onClick={logout}>
                                 Logout
                             </a>
                         </div>
@@ -91,13 +103,16 @@ const Forum = () => {
                 </div>
 
                 <div className="hidden space-x-2 md:inline-block">
+                    {getRole === "manager" ?
+                    <>
                     <a href="#" className="px-4 py-2 rounded-md shadow hover:bg-gray-800 text-white font-semibold" style={{backgroundColor: "green"}} onClick={() => setShowModalUser(true)}>
                         +User
                     </a>
                     <a href="/qst" className="px-4 py-2 rounded-md shadow hover:bg-gray-100 text-white font-semibold" style={{backgroundColor: "green"}}>
                         +Questionnaire
                     </a>
-                    <a href="/" className="px-4 py-2 text-white font-semibold rounded-md shadow hover:bg-gray-100" style={{backgroundColor: "#F24C3D"}}>
+                    </> : <></> }
+                    <a href="/" className="px-4 py-2 text-white font-semibold rounded-md shadow hover:bg-gray-100" style={{backgroundColor: "#F24C3D"}} onClick={logout}>
                         Logout
                     </a>
                 </div>
