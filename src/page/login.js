@@ -19,27 +19,20 @@ const required = (value) => {
 const Login = (props) => {
     let navigate = useNavigate();
 
-    const form = useRef();
-    const checkBtn = useRef();
-
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [loading, setLoading] = useState(false);
-
     const submitLogin = () => {
         navigate('/main');
     }
 
     return(
         <div>
-            <div className="left-0 top-0 flex items-center">
+            {/* <div className="left-0 top-0 flex items-center">
                 <img className="h-20 w-20" src={logo} alt="logo" />
                 <div className="font-bold">PT. Cerberus Sinergi Datasistem</div>
-            </div>
+            </div> */}
 
             <div className="container items-center px-5 py-12 lg:px-20 m-auto">
                 <form className="flex flex-col w-full p-10 px-8 pt-6 mx-auto my-6 mb-4 transition duration-500 ease-in-out transform bg-white border rounded-lg lg:w-1/2 formLogin">
-                    <h3 className="justify-center items-center m-auto"><strong>LOGIN</strong></h3>
+                    <h3 className="justify-center items-center m-auto"><img className="h-30 w-30" src={logo} alt="logo" /></h3>
                     <div className="relative pt-4 flex">
                         <span className="inline-flex items-center px-3 text-sm text-gray-900 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
                             <HiEnvelope className="w-4 h-4" />
@@ -52,13 +45,13 @@ const Login = (props) => {
                         </span>
                         <input type="password" id="password" name="password" placeholder="Input Password" className="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-white focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" />
                     </div> 
-                    <div className="relative pt-4 text-xs text-slate-500 hover:text-blue-600">
-                        <a href="#">Forgot password? Click here.</a>
+                    <div className="relative pt-4 text-md text-slate-500 hover:text-blue-600">
+                        <a href="/">Forgot password? Click here.</a>
                     </div>
                     <div className="flex items-center w-full pt-4 mb-4">
                         <button className="w-full py-3 text-base transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blue-800" style={{backgroundColor: "#D2E9E9"}} onClick={submitLogin}>LOGIN</button>
                     </div>
-                    <div className="m-auto text-xs text-slate-500 hover:text-blue-600">
+                    <div className="m-auto text-md text-slate-500 hover:text-blue-600">
                         <a href="/register">New here? Create an user account. </a>
                     </div>
                 </form>

@@ -20,12 +20,12 @@ const Review = () => {
                                 <HiArrowLeft />
                             </a>
                             <a href="/" className="flex items-center">
-                                <img className="h-8 mr-3"  src={profileUser} alt="User" />
-                                <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">User A <br/> Junior ITS</span>
+                                <img className="h-10 rounded-full" src={profileUser} alt="User A" />
+                                <div className="pl-3">
+                                    <div className="text-base font-semibold">User A</div>
+                                    <div className="font-normal text-gray-500">Junior ITS</div>
+                                </div> 
                             </a>
-                        <p className="text-xl font-semibold justify-center items-center ml-10">
-                                KUESIONER PENILAIAN
-                        </p>
                         <div className="md:hidden">
                             <button className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border" onClick={() => setNavbar(!navbar)}>
                                 {navbar ? (
@@ -65,15 +65,15 @@ const Review = () => {
                 <div>    
                     <div className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? "block" : "hidden"}`}>   
                         <div className="mt-3 space-y-2 lg:hidden md:inline-block md:hidden">
-                            <a href="/" className="inline-block w-full px-4 py-2 text-center text-gray-800 rounded-md shadow hover:bg-gray-100" style={{backgroundColor: "#D2E9E9"}}>
-                                Logout
-                            </a>
+                        <a href="/" className="px-4 py-2 text-white font-semibold rounded-md shadow hover:bg-gray-100" style={{backgroundColor: "#F24C3D"}}>
+                            Logout
+                         </a>
                         </div>
                     </div>
                 </div>
 
                 <div className="hidden space-x-2 md:inline-block">
-                    <a href="/" className="px-4 py-2 rounded-md shadow hover:bg-gray-100" style={{backgroundColor: "#D2E9E9"}}>
+                    <a href="/" className="px-4 py-2 text-white font-semibold rounded-md shadow hover:bg-gray-100" style={{backgroundColor: "#F24C3D"}}>
                         Logout
                     </a>
                 </div>
@@ -83,12 +83,15 @@ const Review = () => {
                 <button className="w-full py-3 text-base transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blue-800" style={{backgroundColor: "#D2E9E9"}}>CREATE NEW</button>
             </div> */}
             <div className="container my-12 mx-auto px-4 md:px-12">
+                <p className="text-xl font-semibold justify-center items-center mx-auto mb-10">
+                    KUESIONER PENILAIAN
+                </p>
                 <div className="flex items-center mb-10">
                     <img className="h-8 mr-3"  src={profileUser} alt="User" />
                     <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">User B - Manager</span>
                 </div>
-                <h3>Berikan rating penilaian untuk setiap pertanyaan berikut. Berikut ketentuan dari setiap angka penilaian yang ada. </h3>
-                <h3 className="mb-2">1: Sangat Tidak Setuju, 2: Tidak Setuju, 3: Cukup Setuju, 4: Setuju, 5: Sangat Setuju </h3>
+                <h3 className="font-semibold">Berikan rating penilaian untuk setiap pertanyaan berikut. Berikut ketentuan dari setiap angka penilaian yang ada. </h3>
+                <h3 className="mb-2 font-semibold mb-10">1: Sangat Tidak Setuju, 2: Tidak Setuju, 3: Cukup Setuju, 4: Setuju, 5: Sangat Setuju </h3>
                 <h3 className="mb-2">1. Memiliki kepemimpinan yang baik dalam mengelola tim?</h3>
                 
                 <div class="flex">
@@ -116,7 +119,7 @@ const Review = () => {
 
                 <textarea maxLength="255" id="message" rows="4" class="block p-2.5 mt-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Kritik, Saran, atau Komentar Lainnya..."></textarea>
                 <div className="space-x-2 md:inline-block mt-2">
-                    <button className="px-4 py-2 rounded-md shadow hover:bg-gray-100" style={{backgroundColor: "#D2E9E9"}}>
+                    <button className="px-4 py-2 rounded-md shadow hover:bg-gray-100 text-white font-semibold" style={{backgroundColor: "green"}}>
                         Done
                     </button>
                 </div>

@@ -1,6 +1,6 @@
 import http from '../http-common';
 
-class ReviewEmpData {
+class ReviewEmpDataService {
     getQst(id) {
         return http.get(`/review/${id}`);
     }
@@ -10,8 +10,10 @@ class ReviewEmpData {
     }
 
     createQst(data) {
-        return http.post("/forum", data);
+        return http.post("/qst", data);
     }
 
-
+    
 }
+
+export default new ReviewEmpDataService();

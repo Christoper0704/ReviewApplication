@@ -20,12 +20,12 @@ const ReviewView = () => {
                                 <HiArrowLeft />
                             </a>
                             <a href="/" className="flex items-center">
-                                <img className="h-8 mr-3"  src={profileUser} alt="User" />
-                                <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">User A <br/> Junior ITS</span>
+                                <img className="h-10 rounded-full" src={profileUser} alt="User A" />
+                                <div className="pl-3">
+                                    <div className="text-base font-semibold">User A</div>
+                                    <div className="font-normal text-gray-500">Junior ITS</div>
+                                </div> 
                             </a>
-                        <p className="text-xl font-semibold justify-center items-center mx-10">
-                                KUESIONER PENILAIAN
-                        </p>
                         <div className="md:hidden">
                             <button className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border" onClick={() => setNavbar(!navbar)}>
                                 {navbar ? (
@@ -65,15 +65,15 @@ const ReviewView = () => {
                 <div>    
                     <div className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? "block" : "hidden"}`}>   
                         <div className="mt-3 space-y-2 lg:hidden md:inline-block md:hidden">
-                            <a href="/" className="inline-block w-full px-4 py-2 text-center text-gray-800 rounded-md shadow hover:bg-gray-100" style={{backgroundColor: "#D2E9E9"}}>
-                                Logout
-                            </a>
+                        <a href="/" className="px-4 py-2 text-white font-semibold rounded-md shadow hover:bg-gray-100" style={{backgroundColor: "#F24C3D"}}>
+                            Logout
+                        </a>
                         </div>
                     </div>
                 </div>
 
                 <div className="hidden space-x-2 md:inline-block">
-                    <a href="/" className="px-4 py-2 rounded-md shadow hover:bg-gray-100" style={{backgroundColor: "#D2E9E9"}}>
+                    <a href="/" className="px-4 py-2 text-white font-semibold rounded-md shadow hover:bg-gray-100" style={{backgroundColor: "#F24C3D"}}>
                         Logout
                     </a>
                 </div>
@@ -85,7 +85,7 @@ const ReviewView = () => {
             <div className="flex justify-center min-h-screen p-10">
                 <div className="md:w-3/5 w-3/4 px-10 flex flex-col gap-2 p-5 text-black">
                     <div className="flex flex-col gap-3 mt-14">
-                        <div className="flex flex-col gap-4 p-4" style={{backgroundColor: "#D2E9E9"}}>
+                        <div className="flex flex-col gap-4 p-4 rounded-lg mb-10" style={{backgroundColor: "#F8F6F4"}}>
                             <div className="flex justify justify-between">
                                 <div className="flex gap-2">
                                     <img src={profileUser} className="w-7 h-7" alt="Anonymous"/>
@@ -93,20 +93,19 @@ const ReviewView = () => {
                                 </div>
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                                <div>Pencapaian: 90%</div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-lg">
+                                <div style={{color: "green"}}>Pencapaian: 90%</div>
                                 <div></div>
-                                <div>Target: 75%</div>
+                                <div className="font-semibold">Target: 75%</div>
                                 <div></div>
-                                <div>Lorem Ipsum Lorem Ipsum Lorem Ipsum</div>
                                 <div></div>
                             </div>
 
-                            <div className="flex justify-between">
-                                Saran atau Kritik: Tingkatkan kinerja!!
+                            <div className="flex justify-between text-md">
+                                Tingkatkan kinerja!!
                             </div>
                         </div>
-                        <div className="flex flex-col gap-4 p-4" style={{backgroundColor: "#D2E9E9"}}>
+                        <div className="flex flex-col gap-4 p-4 rounded-lg mb-10" style={{backgroundColor: "#F8F6F4"}}>
                             <div className="flex justify justify-between">
                                 <div className="flex gap-2">
                                     <img src={profileUser} className="w-7 h-7" alt="Anonymous"/>
@@ -114,12 +113,11 @@ const ReviewView = () => {
                                 </div>
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                                <div>Pencapaian: 90%</div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-lg">
+                                <div style={{color: "green"}}>Pencapaian: 90%</div>
                                 <div></div>
-                                <div>Target: 75%</div>
+                                <div className="font-semibold">Target: 75%</div>
                                 <div></div>
-                                <div>Lorem Ipsum Lorem Ipsum Lorem Ipsum</div>
                                 <div></div>
                             </div>
 
