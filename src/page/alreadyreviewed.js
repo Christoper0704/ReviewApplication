@@ -6,9 +6,10 @@ import profileUser from '../images/profile.png';
 
 import { HiArrowLeft } from "react-icons/hi2";
 
-const Review = () => {
+const AlreadyReviewed = () => {
     let navigate = useNavigate();
     const [navbar, setNavbar] = useState(false);
+    const [saran, setSaran] = useState("Perlu mengasah kemampuan kembali");
     const getName = localStorage.getItem("name");
     const getPosition = localStorage.getItem("position");
 
@@ -95,7 +96,7 @@ const Review = () => {
                 </p>
                 <div className="flex items-center mb-10">
                     <img className="h-8 mr-3"  src={profileUser} alt="User" />
-                    <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-black">Leila Lucy - Senior ITS</span>
+                    <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-black">Kevin Charles - Junior ITS</span>
                 </div>
                 <h3 className="font-semibold">Berikan rating penilaian untuk setiap pertanyaan berikut. Berikut ketentuan dari setiap angka penilaian yang ada. </h3>
                 <h3 className="mb-2 font-semibold mb-10">1: Sangat Tidak Setuju, 2: Tidak Setuju, 3: Cukup Setuju, 4: Setuju, 5: Sangat Setuju </h3>
@@ -103,23 +104,23 @@ const Review = () => {
                 
                 <div class="flex">
                     <div class="flex items-center mr-4">
-                        <input id="1.1" type="radio" value="" name="inline-radio-group" class="w-4 h-4 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                        <input id="1.1" type="radio" value="" name="inline-radio-group-1" class="w-4 h-4 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                         <label for="1.1" class="ml-2 text-sm font-medium dark:text-black">1</label>
                     </div>
                     <div class="flex items-center mr-4">
-                        <input id="1.2" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                        <input id="1.2" type="radio" value="" name="inline-radio-group-1" class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                         <label for="1.2" class="ml-2 text-sm font-medium dark:text-black">2</label>
                     </div>
                     <div class="flex items-center mr-4">
-                        <input id="inline-checked-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                        <label for="inline-checked-radio" class="ml-2 text-sm font-medium dark:text-black">3</label>
+                        <input id="1.3" type="radio" value="" name="inline-radio-group-1" class="w-4 h-4 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                        <label for="1.3" class="ml-2 text-sm font-medium dark:text-black">3</label>
                     </div>
                     <div class="flex items-center mr-4">
-                        <input id="1.4" type="radio" value="" name="inline-radio-group" class="w-4 h-4 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                        <input checked id="1.4" type="radio" value="" name="inline-radio-group-1" class="w-4 h-4 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                         <label for="1.4" class="ml-2 text-sm font-medium dark:text-black">4</label>
                     </div>
                     <div class="flex items-center">
-                        <input id="1.5" type="radio" value="" name="inline-radio-group" class="w-4 h-4 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                        <input id="1.5" type="radio" value="" name="inline-radio-group-1" class="w-4 h-4 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                         <label for="1.5" class="ml-2 text-sm font-medium dark:text-black">5</label>
                     </div>
                 </div>
@@ -128,24 +129,24 @@ const Review = () => {
                 
                 <div class="flex">
                     <div class="flex items-center mr-4">
-                        <input id="1.1" type="radio" value="" name="inline-radio-group" class="w-4 h-4 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                        <label for="1.1" class="ml-2 text-sm font-medium dark:text-black">1</label>
+                        <input id="2.1" type="radio" value="" name="inline-radio-group-2" class="w-4 h-4 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                        <label for="2.1" class="ml-2 text-sm font-medium dark:text-black">1</label>
                     </div>
                     <div class="flex items-center mr-4">
-                        <input id="1.2" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                        <label for="1.2" class="ml-2 text-sm font-medium dark:text-black">2</label>
+                        <input id="2.2" type="radio" value="" name="inline-radio-group-2" class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                        <label for="2.2" class="ml-2 text-sm font-medium dark:text-black">2</label>
                     </div>
                     <div class="flex items-center mr-4">
-                        <input id="inline-checked-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                        <label for="inline-checked-radio" class="ml-2 text-sm font-medium dark:text-black">3</label>
+                        <input id="2.3" type="radio" value="" name="inline-radio-group-2" class="w-4 h-4 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                        <label for="2.3" class="ml-2 text-sm font-medium dark:text-black">3</label>
                     </div>
                     <div class="flex items-center mr-4">
-                        <input id="1.4" type="radio" value="" name="inline-radio-group" class="w-4 h-4 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                        <label for="1.4" class="ml-2 text-sm font-medium dark:text-black">4</label>
+                        <input checked id="2.4" type="radio" value="" name="inline-radio-group-2" class="w-4 h-4 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                        <label for="2.4" class="ml-2 text-sm font-medium dark:text-black">4</label>
                     </div>
                     <div class="flex items-center">
-                        <input id="1.5" type="radio" value="" name="inline-radio-group" class="w-4 h-4 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                        <label for="1.5" class="ml-2 text-sm font-medium dark:text-black">5</label>
+                        <input id="2.5" type="radio" value="" name="inline-radio-group-2" class="w-4 h-4 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                        <label for="2.5" class="ml-2 text-sm font-medium dark:text-black">5</label>
                     </div>
                 </div>
 
@@ -153,28 +154,28 @@ const Review = () => {
                 
                 <div class="flex">
                     <div class="flex items-center mr-4">
-                        <input id="1.1" type="radio" value="" name="inline-radio-group" class="w-4 h-4 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                        <label for="1.1" class="ml-2 text-sm font-medium dark:text-black">1</label>
+                        <input id="3.1" type="radio" value="" name="inline-radio-group-3" class="w-4 h-4 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                        <label for="3.1" class="ml-2 text-sm font-medium dark:text-black">1</label>
                     </div>
                     <div class="flex items-center mr-4">
-                        <input id="1.2" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                        <label for="1.2" class="ml-2 text-sm font-medium dark:text-black">2</label>
+                        <input id="3.2" type="radio" value="" name="inline-radio-group-3" class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                        <label for="3.2" class="ml-2 text-sm font-medium dark:text-black">2</label>
                     </div>
                     <div class="flex items-center mr-4">
-                        <input id="inline-checked-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                        <label for="inline-checked-radio" class="ml-2 text-sm font-medium dark:text-black">3</label>
+                        <input checked id="3.3" type="radio" value="" name="inline-radio-group-3" class="w-4 h-4 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                        <label for="3.3" class="ml-2 text-sm font-medium dark:text-black">3</label>
                     </div>
                     <div class="flex items-center mr-4">
-                        <input id="1.4" type="radio" value="" name="inline-radio-group" class="w-4 h-4 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                        <label for="1.4" class="ml-2 text-sm font-medium dark:text-black">4</label>
+                        <input id="3.4" type="radio" value="" name="inline-radio-group-3" class="w-4 h-4 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                        <label for="3.4" class="ml-2 text-sm font-medium dark:text-black">4</label>
                     </div>
                     <div class="flex items-center">
-                        <input id="1.5" type="radio" value="" name="inline-radio-group" class="w-4 h-4 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                        <label for="1.5" class="ml-2 text-sm font-medium dark:text-black">5</label>
+                        <input id="3.5" type="radio" value="" name="inline-radio-group-3" class="w-4 h-4 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                        <label for="3.5" class="ml-2 text-sm font-medium dark:text-black">5</label>
                     </div>
                 </div>
 
-                <textarea maxLength="255" id="message" rows="4" class="block p-2.5 mt-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:border-gray-600 dark:placeholder-black dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Kritik, Saran, atau Komentar Lainnya..."></textarea>
+                <textarea maxLength="255" value={saran} onChange={(e) => setSaran(e.target.value)} id="message" rows="4" class="block p-2.5 mt-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:border-gray-600 dark:placeholder-black dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Kritik, Saran, atau Komentar Lainnya..."></textarea>
                 <div className="space-x-2 md:inline-block mt-2">
                     <button className="px-4 py-2 rounded-md shadow hover:bg-gray-100 text-white font-semibold" style={{backgroundColor: "green"}}>
                         Done
@@ -186,4 +187,4 @@ const Review = () => {
     );
 };
 
-export default Review;
+export default AlreadyReviewed;

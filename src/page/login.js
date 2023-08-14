@@ -37,7 +37,9 @@ const Login = () => {
             localStorage.setItem("id", account.id);
             localStorage.setItem("email", account.email);
             localStorage.setItem("password", account.password);
-            localStorage.setItem("role", account.role)
+            localStorage.setItem("role", account.role);
+            localStorage.setItem("name", account.name);
+            localStorage.setItem("position", account.position);
             navigate('/main');
         }
     }
@@ -54,16 +56,16 @@ const Login = () => {
                 <form className="flex flex-col w-full p-10 px-8 pt-6 mx-auto my-6 mb-4 transition duration-500 ease-in-out transform bg-white border rounded-lg lg:w-1/2 formLogin" onSubmit={submitLogin}>
                     <h3 className="justify-center items-center m-auto"><img className="h-30 w-30" src={logo} alt="logo" /></h3>
                     <div className="relative pt-4 flex">
-                        <span className="inline-flex items-center px-3 text-sm text-gray-900 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                        <span className="inline-flex items-center px-3 text-sm text-gray-900 rounded-l-md dark:text-black dark:border-gray-600">
                             <HiEnvelope className="w-4 h-4" />
                         </span>
-                        <input type="text" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Input Email" className="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-white focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" />
+                        <input type="text" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Input Email" className="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-white focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" required/>
                     </div>
                     <div className="relative pt-4 flex">
-                        <span className="inline-flex items-center px-3 text-sm text-gray-900 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                        <span className="inline-flex items-center px-3 text-sm text-gray-900 rounded-l-md dark:text-black dark:border-gray-600">
                             <HiKey className="w-4 h-4" />
                         </span>
-                        <input type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)} placeholder="Input Password" className="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-white focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" />
+                        <input type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)} placeholder="Input Password" className="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-white focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" required/>
                     </div> 
                     <div className="relative pt-4 text-md text-slate-500 hover:text-blue-600">
                         <a href="/">Forgot password? Click here.</a>

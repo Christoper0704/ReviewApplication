@@ -11,10 +11,12 @@ const Main = () => {
     const [showModalForum, setShowModalForum] = useState(false);
 
     const getRole = localStorage.getItem("role");
+    const getName = localStorage.getItem("name");
+    const getPosition = localStorage.getItem("position");
 
     const logout = () => {
         localStorage.clear();
-        window.location.reload();
+        navigate('/');
     }
 
             return(
@@ -23,11 +25,11 @@ const Main = () => {
                         <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
                             <div>
                                 <div className="flex items-center justify-between py-3 md:py-5 mr-3">
-                                    <a href="/" className="flex items-center">
-                                        <img className="h-10 rounded-full" src={profileUser} alt="User A" />
+                                    <a href="/main" className="flex items-center">
+                                        <img className="h-10 rounded-full" src={profileUser} alt={getName} />
                                         <div className="pl-3">
-                                            <div className="text-base font-semibold">User A</div>
-                                            <div className="font-normal text-gray-500">Junior ITS</div>
+                                            <div className="text-base font-semibold">{getName}</div>
+                                            <div className="font-normal text-gray-500">{getPosition}</div>
                                         </div> 
                                     </a>
                                 <div className="md:hidden">
@@ -83,18 +85,6 @@ const Main = () => {
                         </div>
                     </div>
                 </nav>  
-                    {/* <nav className="border-gray-200 dark:bg-gray-900" style={{backgroundColor: "#F8F6F4"}}>
-                        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                            <a href="#" className="flex items-center">
-                                <img className="h-8 mr-3"  src={profileUser} alt="User" />
-                                <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">User A <br/> Junior ITS</span>
-                            </a>
-                            <p className="justify-center items-center mx-auto text-xl font-semibold">FORUM</p>
-                        </div>
-                    </nav> */}
-                    {/* <div className="flex items-center px-6 pt-4 mb-4 mx-auto">
-                        <button className="w-full py-3 text-base transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blue-800" style={{backgroundColor: "#D2E9E9"}}>CREATE NEW</button>
-                    </div> */}
                     <div className="container my-12 mx-auto px-4 md:px-12">
                         <p className="text-2xl font-semibold justify-center items-center mb-10">
                                 FORUM
@@ -134,7 +124,7 @@ const Main = () => {
                                 <div className="relative w-auto my-6 mx-auto max-w-3xl">
                                     <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                                         <div className="flex items-start justify-between p-5 rounded-t">
-                                            <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Add Forum</h3>
+                                            <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-black">Add Forum</h3>
                                             <button className="top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                                             onClick={() => setShowModalForum(false)}>
                                                 <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -147,7 +137,7 @@ const Main = () => {
                                         <div class="px-6 lg:px-8">
                                             <form class="space-y-6 mb-4" action="#">
                                                 <div>
-                                                    <input type="type" name="forum" id="forum" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Input Forum Name" required />
+                                                    <input type="type" name="forum" id="forum" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-500 dark:placeholder-black dark:text-black" placeholder="Input Forum Name" required />
                                                 </div>
                                                 <button type="submit" class="w-full text-white hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" style={{backgroundColor: "green"}} onClick={() => setShowModalForum(false)}>Add</button>
                                             </form>

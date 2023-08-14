@@ -9,6 +9,10 @@ import { HiArrowLeft } from 'react-icons/hi2';
 const ReviewView = () => {
     let navigate = useNavigate();
     const [navbar, setNavbar] = useState(false);
+    const getName = localStorage.getItem("name");
+    const getPosition = localStorage.getItem("position");
+    const getRole = localStorage.getItem("role");
+
     const logout = () => {
         localStorage.clear();
         window.location.reload();
@@ -24,10 +28,10 @@ const ReviewView = () => {
                                 <HiArrowLeft />
                             </a>
                             <a href="/" className="flex items-center">
-                                <img className="h-10 rounded-full" src={profileUser} alt="User A" />
+                                <img className="h-10 rounded-full" src={profileUser} alt={getName} />
                                 <div className="pl-3">
-                                    <div className="text-base font-semibold">User A</div>
-                                    <div className="font-normal text-gray-500">Junior ITS</div>
+                                    <div className="text-base font-semibold">{getName}</div>
+                                    <div className="font-normal text-gray-500">{getPosition}</div>
                                 </div> 
                             </a>
                         <div className="md:hidden">
@@ -90,12 +94,21 @@ const ReviewView = () => {
                 <div className="md:w-3/5 w-3/4 px-10 flex flex-col gap-2 p-5 text-black">
                     <div className="flex flex-col gap-3 mt-14">
                         <div className="flex flex-col gap-4 p-4 rounded-lg mb-10" style={{backgroundColor: "#F8F6F4"}}>
+                            {getRole === "user" ?
                             <div className="flex justify justify-between">
                                 <div className="flex gap-2">
                                     <img src={profileUser} className="w-7 h-7" alt="Anonymous"/>
                                     <span>Anonymous</span>
                                 </div>
                             </div>
+                            :
+                            <div className="flex justify justify-between">
+                                <div className="flex gap-2">
+                                    <img src={profileUser} className="w-7 h-7" alt="Anonymous"/>
+                                    <span>Mona Amelia</span>
+                                </div>
+                            </div>
+                            }
 
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-lg">
                                 <div style={{color: "green"}}>Pencapaian: 90%</div>
@@ -110,12 +123,21 @@ const ReviewView = () => {
                             </div>
                         </div>
                         <div className="flex flex-col gap-4 p-4 rounded-lg mb-10" style={{backgroundColor: "#F8F6F4"}}>
+                            {getRole === "user" ?
                             <div className="flex justify justify-between">
                                 <div className="flex gap-2">
                                     <img src={profileUser} className="w-7 h-7" alt="Anonymous"/>
                                     <span>Anonymous</span>
                                 </div>
                             </div>
+                            :
+                            <div className="flex justify justify-between">
+                                <div className="flex gap-2">
+                                    <img src={profileUser} className="w-7 h-7" alt="Anonymous"/>
+                                    <span>Leila Lucy</span>
+                                </div>
+                            </div>
+                            }
 
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-lg">
                                 <div style={{color: "green"}}>Pencapaian: 90%</div>
@@ -126,7 +148,7 @@ const ReviewView = () => {
                             </div>
 
                             <div className="flex justify-between">
-                                Saran atau Kritik: Tingkatkan kinerja!!
+                                Tingkatkan kinerja!!
                             </div>
                         </div>        
                     </div>

@@ -45,16 +45,16 @@ const Reg = (props) => {
                 <form className="flex flex-col w-full p-10 px-8 pt-6 mx-auto my-6 mb-4 transition duration-500 ease-in-out transform bg-white border rounded-lg lg:w-1/2 formRegister">
                     <h3 className="justify-center items-center m-auto"><img className="h-30 w-30" src={logo} alt="logo" /></h3>
                     <div className="relative pt-4 flex">
-                        <span className="inline-flex items-center px-3 text-sm text-gray-900 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                        <span className="inline-flex items-center px-3 text-sm text-gray-900 rounded-l-md dark:text-black dark:border-gray-600">
                             <HiUser className="w-4 h-4" />
                         </span>
-                        <input type="text" id="name" name="name" placeholder="Input Name" className="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-white focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" />
+                        <input type="text" id="name" name="name" placeholder="Input Name" className="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-white focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" required/>
                     </div>
                     <div class="relative mt-4 flex">
-                        <span className="inline-flex items-center px-3 text-sm text-gray-900 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                        <span className="inline-flex items-center px-3 text-sm text-gray-900 rounded-l-md dark:text-black dark:border-gray-600">
                             <HiIdentification className="w-4 h-4" />
                         </span>
-                        <select class="w-full px-4 py-2 mt-2 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-white focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
+                        <select class="w-5/6 px-4 py-2 mt-2 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-white focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" required>
                             <option disabled={true} value="">
                             Select Position
                             </option>
@@ -64,20 +64,20 @@ const Reg = (props) => {
                         </select>
                     </div>
                     <div className="relative pt-4 flex">
-                        <span className="inline-flex items-center px-3 text-sm text-gray-900 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                        <span className="inline-flex items-center px-3 text-sm text-gray-900 rounded-l-md dark:text-black dark:border-gray-600">
                             <HiEnvelope className="w-4 h-4" />
                         </span>
-                        <input type="text" id="email" name="email" placeholder="Input Email" className="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-white focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" />
+                        <input type="text" id="email" name="email" placeholder="Input Email" className="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-white focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" required/>
                     </div>
                     <div className="relative pt-4 flex">
-                        <span className="inline-flex items-center px-3 text-sm text-gray-900 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                        <span className="inline-flex items-center px-3 text-sm text-gray-900 rounded-l-md dark:text-black dark:border-gray-600">
                             <HiKey className="w-4 h-4" />
                         </span>
-                        <input type="password" id="password" name="password" placeholder="Input Password" className="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-white focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" />
+                        <input type="password" id="password" name="password" placeholder="Input Password" className="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-white focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" required/>
                     </div>
                     <div className="relative pt-4 flex">
                         <button className="w-1/2 py-3 text-base transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blue-800" style={{backgroundColor: "#D2E9E9"}}>Upload Photo</button>
-                        <span className="inline-flex items-center px-3 text-sm text-gray-900 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                        <span className="inline-flex items-center px-3 text-sm text-gray-900 rounded-l-md dark:text-black dark:border-gray-600">
                             Supported Format: PNG, JPG. Max Size: 2MB.
                         </span>
                     </div> 

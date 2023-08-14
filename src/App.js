@@ -10,6 +10,7 @@ import Forum from './page/forum';
 import Quest from './page/questionnaire';
 import Review from './page/review';
 import ReviewView from './page/reviewview';
+import AlreadyReviewed from './page/alreadyreviewed';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path='/forum' element={<Forum />} />
           <Route path='/qst' element={<Quest />} />
           <Route path='/review' element={<Review />} />
+          <Route path='/alreadyreviewed' element={<AlreadyReviewed />} />
           <Route path='/viewreview' element={<ReviewView />} />
       </Routes>
     </BrowserRouter>
