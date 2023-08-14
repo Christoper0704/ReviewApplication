@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate, useNavigate  } from 'react-router-dom';
 import logo from '../images/logoCerberus.png';
@@ -29,10 +29,46 @@ const Reg = (props) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
+    const [inputFields, setInputFields] = useState({
+        name: "",
+        position: "",
+        email: "",
+        password: "",
+    });
+    const [errors, setErrors] = useState({});
+    const [submitting, setSubmitting] = useState(false);
+    const validateValues = (inputValues) => {
+        let errors = {};
+        if(inputValues.name.length == 0) {
+            errors.name = "Name must be filled";
+        }
+        if (inputValues.email.length == 0) {
+          errors.email = "Email must be filled";
+        }
+        if (inputValues.password.length < 5) {
+          errors.password = "Password is too short";
+        }
+        return errors;
+      };
+    const handleChange = (e) => {
+        setInputFields({ ...inputFields, [e.target.name]: e.target.value });
+    };
 
-    const submitRegister = () => {
-        navigate('/main');
+    const submitRegister = (event) => {
+        event.preventDefault();
+        setErrors(validateValues(inputFields));
+        setSubmitting(true);
     }
+
+    const finishSubmit = () => {
+        navigate('/main');
+      };
+    
+      useEffect(() => {
+        if (Object.keys(errors).length === 0 && submitting) {
+          finishSubmit();
+        }
+      }, [errors]);
 
     return(
         <div>
@@ -42,13 +78,19 @@ const Reg = (props) => {
             </div> */}
 
             <div className="container items-center px-5 py-12 lg:px-20 m-auto">
-                <form className="flex flex-col w-full p-10 px-8 pt-6 mx-auto my-6 mb-4 transition duration-500 ease-in-out transform bg-white border rounded-lg lg:w-1/2 formRegister">
+                        {Object.keys(errors).length === 0 && submitting ? (
+                    <span className="success">Successfully submitted ✓</span>
+                ) : null}
+                <form className="flex flex-col w-full p-10 px-8 pt-6 mx-auto my-6 mb-4 transition duration-500 ease-in-out transform bg-white border rounded-lg lg:w-1/2 formRegister" onSubmit={submitRegister}>
                     <h3 className="justify-center items-center m-auto"><img className="h-30 w-30" src={logo} alt="logo" /></h3>
                     <div className="relative pt-4 flex">
                         <span className="inline-flex items-center px-3 text-sm text-gray-900 rounded-l-md dark:text-black dark:border-gray-600">
                             <HiUser className="w-4 h-4" />
                         </span>
-                        <input type="text" id="name" name="name" placeholder="Input Name" className="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-white focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" required/>
+                        <input type="text" id="name" name="name" value={inputFields.name} onChange={handleChange} placeholder="Input Name" className="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-white focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" required/>
+                        {errors.name ? (
+                            <p className="error">Name must be filled</p>
+                        ) : null}
                     </div>
                     <div class="relative mt-4 flex">
                         <span className="inline-flex items-center px-3 text-sm text-gray-900 rounded-l-md dark:text-black dark:border-gray-600">
@@ -58,23 +100,30 @@ const Reg = (props) => {
                             <option disabled={true} value="">
                             Select Position
                             </option>
-                            <option>Junior IT Support</option>
-                            <option>Senior IT Support</option>
-                            <option>Manager</option>
+                            <option value={inputFields.position} onChange={handleChange}>Junior IT Support</option>
+                            <option value={inputFields.position} onChange={handleChange}>Senior IT Support</option>
+                            <option value={inputFields.position} onChange={handleChange}>Manager</option>
                         </select>
                     </div>
                     <div className="relative pt-4 flex">
                         <span className="inline-flex items-center px-3 text-sm text-gray-900 rounded-l-md dark:text-black dark:border-gray-600">
                             <HiEnvelope className="w-4 h-4" />
                         </span>
-                        <input type="text" id="email" name="email" placeholder="Input Email" className="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-white focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" required/>
+                        <input type="text" id="email" name="email" value={inputFields.email} onChange={handleChange} placeholder="Input Email" className="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-white focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" required/>
+                        {errors.email ? (
+                            <p className="error">Email must be filled</p>
+                        ) : null}
                     </div>
                     <div className="relative pt-4 flex">
                         <span className="inline-flex items-center px-3 text-sm text-gray-900 rounded-l-md dark:text-black dark:border-gray-600">
                             <HiKey className="w-4 h-4" />
                         </span>
-                        <input type="password" id="password" name="password" placeholder="Input Password" className="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-white focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" required/>
+                        <input type="password" id="password" name="password" value={inputFields.password} onChange={handleChange} placeholder="Input Password" className="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-white focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" required/>
+                        
                     </div>
+                    {errors.password ? (
+                            <p className="error">Password must be maximum at 5 characters</p>
+                        ) : null}
                     <div className="relative pt-4 flex">
                         <button className="w-1/2 py-3 text-base transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blue-800" style={{backgroundColor: "#D2E9E9"}}>Upload Photo</button>
                         <span className="inline-flex items-center px-3 text-sm text-gray-900 rounded-l-md dark:text-black dark:border-gray-600">
@@ -82,7 +131,7 @@ const Reg = (props) => {
                         </span>
                     </div> 
                     <div className="flex items-center w-full pt-4 mb-4">
-                        <button className="w-full py-3 text-base transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blue-800" style={{backgroundColor: "#D2E9E9"}} onSubmit={submitRegister}>REGISTER</button>
+                        <button type="submit" className="w-full py-3 text-base transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blue-800" style={{backgroundColor: "#D2E9E9"}}>REGISTER</button>
                     </div>
                     <div className="m-auto text-md text-slate-500 hover:text-blue-600">
                         <a href="/login">Have an account? Login here.</a>
