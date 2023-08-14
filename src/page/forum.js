@@ -8,7 +8,7 @@ import { HiTrash, HiArrowLeft } from 'react-icons/hi2';
 const Forum = () => {
     let navigate = useNavigate();
     const [navbar, setNavbar] = useState(false);
-    const [showModalForum, setShowModalForum] = useState(false);
+    const [showModalUser, setShowModalUser] = useState(false);
 
     const openReview = () => {
         navigate('/review');
@@ -77,7 +77,7 @@ const Forum = () => {
                             <a href="/viewreview" className="inline-block w-full px-4 py-2 text-center rounded-md shadow hover:bg-gray-800" style={{backgroundColor: "#D2E9E9"}}>
                                 View Review
                             </a>
-                            <a href="/" className="inline-block w-full px-4 py-2 text-center rounded-md shadow hover:bg-gray-800" style={{backgroundColor: "#D2E9E9"}}>
+                            <a href="#" className="inline-block w-full px-4 py-2 text-center rounded-md shadow hover:bg-gray-800" style={{backgroundColor: "#D2E9E9"}} onClick={() => setShowModalUser(true)}>
                                 Add User
                             </a>
                             <a href="/qst" className="inline-block w-full px-4 py-2 text-center text-gray-800 rounded-md shadow hover:bg-gray-100" style={{backgroundColor: "#D2E9E9"}}>
@@ -91,7 +91,7 @@ const Forum = () => {
                 </div>
 
                 <div className="hidden space-x-2 md:inline-block">
-                    <a href="/" className="px-4 py-2 rounded-md shadow hover:bg-gray-800 text-white font-semibold" style={{backgroundColor: "green"}}>
+                    <a href="#" className="px-4 py-2 rounded-md shadow hover:bg-gray-800 text-white font-semibold" style={{backgroundColor: "green"}} onClick={() => setShowModalUser(true)}>
                         +User
                     </a>
                     <a href="/qst" className="px-4 py-2 rounded-md shadow hover:bg-gray-100 text-white font-semibold" style={{backgroundColor: "green"}}>
@@ -224,14 +224,64 @@ const Forum = () => {
                     </div>
             </div>
             {
-                showModalForum ? (
-                    <>
-                        <div
-            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
-          >
-            </div>
-                    </>
-                ) : null
+                showModalUser ?
+                    (
+                        <>
+                            <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none" style={{backgroundColor: ""}}>
+                                <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                                    <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                                        <div className="flex items-start justify-between p-5 rounded-t">
+                                            <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Add User</h3>
+                                            <button className="top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                            onClick={() => setShowModalUser(false)}>
+                                                <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                                </svg>
+                                                <span class="sr-only">Close modal</span>
+                                            </button>
+                                        </div>
+        
+                                        <div class="px-6 lg:px-8">
+                                            <form class="space-y-6 mb-4" action="#">
+                                                <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                                                <div class="relative">
+                                                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                                        </svg>
+                                                    </div>
+                                                    <input type="search" id="default-search" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search User" required />
+                                                    <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+                                                </div>
+                                            </form>
+                                            <div className="flex items-center mb-10 hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer">
+                                                <img className="h-10 rounded-full" src={profileUser} alt="User A" />
+                                                <div className="pl-3">
+                                                    <div className="text-base font-semibold">User A</div>
+                                                    <div className="font-normal text-gray-500">Junior ITS</div>
+                                                </div>
+                                            </div> 
+                                            <div className="flex items-center mb-10 hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer">
+                                                <img className="h-10 rounded-full" src={profileUser} alt="User A" />
+                                                <div className="pl-3">
+                                                    <div className="text-base font-semibold">User A</div>
+                                                    <div className="font-normal text-gray-500">Junior ITS</div>
+                                                </div>
+                                            </div>
+                                            <div className="flex items-center mb-10 hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer">
+                                                <img className="h-10 rounded-full" src={profileUser} alt="User A" />
+                                                <div className="pl-3">
+                                                    <div className="text-base font-semibold">User A</div>
+                                                    <div className="font-normal text-gray-500">Junior ITS</div>
+                                                </div>
+                                            </div>  
+                                        </div>  
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+                        </>
+                    ) : null
             }
         </>
         
