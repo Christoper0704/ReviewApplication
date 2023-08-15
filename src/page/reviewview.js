@@ -5,6 +5,7 @@ import { Link, Navigate, useNavigate  } from 'react-router-dom';
 import profileUser from '../images/profile.png';
 
 import { HiArrowLeft } from 'react-icons/hi2';
+import { LogoutButton, LogoutButtonResponsive } from "../components/Button";
 
 const ReviewView = () => {
     let navigate = useNavigate();
@@ -73,17 +74,13 @@ const ReviewView = () => {
                 <div>    
                     <div className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? "block" : "hidden"}`}>   
                         <div className="mt-3 space-y-2 lg:hidden md:inline-block md:hidden">
-                            <a href="#" className="inline-block w-full px-4 py-2 text-center text-white font-semibold rounded-md shadow hover:bg-gray-100" onClick={logout} style={{backgroundColor: "#F24C3D"}}>
-                                Logout
-                            </a>
+                            <LogoutButtonResponsive />
                         </div>
                     </div>
                 </div>
 
                 <div className="hidden space-x-2 md:inline-block">
-                    <a href="#" className="px-4 py-2 text-white font-semibold rounded-md shadow hover:bg-gray-100" onClick={logout} style={{backgroundColor: "#F24C3D"}}>
-                        Logout
-                    </a>
+                    <LogoutButton />
                 </div>
             </div>
         </nav>

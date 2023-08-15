@@ -3,12 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate, useNavigate  } from 'react-router-dom';
 
 import profileUser from '../images/profile.png';
-import { HiTrash, HiArrowLeft } from 'react-icons/hi2';
+import { HiTrash, HiArrowLeft, HiCheckCircle } from 'react-icons/hi2';
+import { LogoutButton, LogoutButtonResponsive } from "../components/Button";
 
 const Forum = () => {
     let navigate = useNavigate();
     const [navbar, setNavbar] = useState(false);
     const [showModalUser, setShowModalUser] = useState(false);
+    const [showSuccessMessage, setSuccessMessage] = useState(false);
     const getName = localStorage.getItem("name");
     const getPosition = localStorage.getItem("position");
     const getRole = localStorage.getItem("role");
@@ -19,6 +21,19 @@ const Forum = () => {
 
     const openAlreadyReviewed = () => {
         navigate('/alreadyreviewed');
+    }
+
+    const openQstPage = () => {
+        navigate('/qst');
+    }
+
+    const openViewReviewPage = () => {
+        navigate('/viewreview');
+    }
+
+    const addUser = () => {
+        setSuccessMessage(true);
+        setShowModalUser(false);
     }
 
     const logout = () => {
@@ -43,9 +58,7 @@ const Forum = () => {
                                 </div>                             
                             </a>
                         <div className="hidden space-x-2 md:inline-block">
-                            <a href="/viewreview">
-                                <button className="px-4 py-2 mx-6 rounded-md shadow hover:bg-gray-800" style={{backgroundColor: "#D2E9E9"}}>View Review</button>
-                            </a>
+                            <button className="px-4 py-2 mx-6 rounded-md shadow hover:font-semibold" style={{backgroundColor: "#D2E9E9"}} onClick={openViewReviewPage}>View Review</button>
                         </div>
                         <div className="md:hidden">
                             <button className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border" onClick={() => setNavbar(!navbar)}>
@@ -86,23 +99,21 @@ const Forum = () => {
                 <div>    
                     <div className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? "block" : "hidden"}`}>   
                         <div className="mt-3 space-y-2 lg:hidden md:inline-block md:hidden">
-                            <a href="/viewreview" className="inline-block w-full px-4 py-2 text-center rounded-md shadow hover:bg-gray-800" style={{backgroundColor: "#D2E9E9"}}>
+                            <button onClick={openViewReviewPage} className="inline-block w-full px-4 py-2 text-center rounded-md shadow hover:font-semibold" style={{backgroundColor: "#D2E9E9"}}>
                                 View Review
-                            </a>
+                            </button>
                             
                             {getRole === "manager" ?
                             <>
-                                <a href="#" className="inline-block w-full px-4 py-2 text-center rounded-md shadow hover:bg-gray-800 text-white font-semibold" style={{backgroundColor: "green"}} onClick={() => setShowModalUser(true)}>
+                                <button className="inline-block w-full px-4 py-2 text-center rounded-md shadow hover:text-green-400 text-white font-semibold" style={{backgroundColor: "green"}} onClick={() => setShowModalUser(true)}>
                                     Add User
-                                </a>
-                                <a href="/qst" className="inline-block w-full px-4 py-2 text-center rounded-md shadow hover:bg-gray-100 text-white font-semibold" style={{backgroundColor: "green"}}>
+                                </button>
+                                <button className="inline-block w-full px-4 py-2 text-center rounded-md shadow hover:text-green-400 text-white font-semibold" style={{backgroundColor: "green"}} onClick={openQstPage}>
                                     Add Questionnaire
-                                </a>
+                                </button>
                             </>
                             : <></> }
-                            <a href="/" className="inline-block w-full px-4 py-2 text-white text-center font-semibold rounded-md shadow hover:bg-gray-100" style={{backgroundColor: "#F24C3D"}} onClick={logout}>
-                                Logout
-                            </a>
+                            <LogoutButtonResponsive onClick={logout} />
                         </div>
                     </div>
                 </div>
@@ -110,21 +121,37 @@ const Forum = () => {
                 <div className="hidden space-x-2 md:inline-block">
                     {getRole === "manager" ?
                     <>
-                    <a href="#" className="px-4 py-2 rounded-md shadow hover:bg-gray-800 text-white font-semibold" style={{backgroundColor: "green"}} onClick={() => setShowModalUser(true)}>
+                    <button className="px-4 py-2 rounded-md shadow hover:text-green-400 text-white font-semibold" style={{backgroundColor: "green"}} onClick={() => setShowModalUser(true)}>
                         +User
-                    </a>
-                    <a href="/qst" className="px-4 py-2 rounded-md shadow hover:bg-gray-100 text-white font-semibold" style={{backgroundColor: "green"}}>
+                    </button>
+                    <a href="/qst" className="px-4 py-2 rounded-md shadow hover:text-green-400 text-white font-semibold" style={{backgroundColor: "green"}}>
                         +Questionnaire
                     </a>
                     </> : <></> }
-                    <a href="/" className="px-4 py-2 text-white font-semibold rounded-md shadow hover:bg-gray-100" style={{backgroundColor: "#F24C3D"}} onClick={logout}>
-                        Logout
-                    </a>
+                    <LogoutButton onClick={logout} />
                 </div>
             </div>
         </nav>
 
             <div className="container my-12 mx-auto px-4 md:px-12">
+            {showSuccessMessage ? (
+                        <div
+                        className=
+                          "text-white w-3/4 justify-center mx-auto items-center px-6 py-4 border-0 rounded relative mb-4 bg-green-500 top-0 relative">
+                        <span className="text-xl inline-block mr-5 align-middle">
+                          <HiCheckCircle />
+                        </span>
+                        <span className="inline-block align-middle mr-8">
+                          <b className="capitalize">Success Add Forum</b>
+                        </span>
+                        <button
+                          className="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none"
+                          onClick={() => setSuccessMessage(false)}
+                        >
+                          <span>×</span>
+                        </button>
+                      </div>                        
+                    ) : null}
                 <p className="mx-auto text-2xl font-semibold justify-center items-center mb-10">
                     IT SUPPORT
                 </p>
@@ -163,7 +190,7 @@ const Forum = () => {
                                         -
                                     </td>
                                     <td className="px-6 py-4">
-                                        <a href="#" className="font-medium text-black dark:text-red-500"><HiTrash /></a>
+                                        <button className="font-medium text-black dark:text-red-500 hover:text-red-400"><HiTrash /></button>
                                     </td>
                                 </tr>
                                 <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer" onClick={openAlreadyReviewed}>
@@ -181,10 +208,10 @@ const Forum = () => {
                                         22/08/2023 00:00:00
                                     </td>
                                     <td className="px-6 py-4">
-                                        <a href="#" className="font-medium text-black dark:text-red-500"><HiTrash /></a>
+                                        <button className="font-medium text-black dark:text-red-500 hover:text-red-400"><HiTrash /></button>
                                     </td>
                                 </tr>
-                                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer">
+                                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 cursor-not-allowed">
                                     <th scope="row" className="flex items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         <img className="w-10 h-10 rounded-full" src={profileUser} alt="Harry" />
                                         <div className="pl-3">
@@ -193,13 +220,13 @@ const Forum = () => {
                                         </div>  
                                     </th>
                                     <td className="px-10 py-4">
-                                        Unreviewed
+                                        Reviewed
                                     </td>
                                     <td className="px-10 py-4">
-                                        -
+                                        14/08/2023 00:00
                                     </td>
                                     <td className="px-6 py-4">
-                                        <a href="#" className="font-medium text-black dark:text-red-500"><HiTrash /></a>
+                                        <button className="font-medium text-black dark:text-red-500 hover:text-red-400"><HiTrash /></button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -237,21 +264,21 @@ const Forum = () => {
                                                     <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
                                                 </div>
                                             </form>
-                                            <div className="flex items-center mb-10 hover:bg-gray-50 dark:hover:bg-gray-300 cursor-pointer">
+                                            <div className="flex items-center mb-10 hover:bg-gray-50 dark:hover:bg-gray-300 cursor-pointer" onClick={addUser}>
                                                 <img className="h-10 rounded-full" src={profileUser} alt="User A" />
                                                 <div className="pl-3">
                                                     <div className="text-base font-semibold">User A</div>
                                                     <div className="font-normal text-gray-500">Junior ITS</div>
                                                 </div>
                                             </div> 
-                                            <div className="flex items-center mb-10 hover:bg-gray-50 dark:hover:bg-gray-300 cursor-pointer">
+                                            <div className="flex items-center mb-10 hover:bg-gray-50 dark:hover:bg-gray-300 cursor-pointer" onClick={addUser}>
                                                 <img className="h-10 rounded-full" src={profileUser} alt="User B" />
                                                 <div className="pl-3">
                                                     <div className="text-base font-semibold">User B</div>
                                                     <div className="font-normal text-gray-500">Junior ITS</div>
                                                 </div>
                                             </div>
-                                            <div className="flex items-center mb-10 hover:bg-gray-50 dark:hover:bg-gray-300 cursor-pointer">
+                                            <div className="flex items-center mb-10 hover:bg-gray-50 dark:hover:bg-gray-300 cursor-pointer" onClick={addUser}>
                                                 <img className="h-10 rounded-full" src={profileUser} alt="User C" />
                                                 <div className="pl-3">
                                                     <div className="text-base font-semibold">User C</div>

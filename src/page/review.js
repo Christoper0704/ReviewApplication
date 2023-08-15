@@ -1,14 +1,18 @@
 import React, { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate, useNavigate  } from 'react-router-dom';
+import axios from "axios";
+import { useEffect } from "react";
 
 import profileUser from '../images/profile.png';
 
 import { HiArrowLeft } from "react-icons/hi2";
+import { LogoutButton, LogoutButtonResponsive } from "../components/Button";
 
 const Review = () => {
     let navigate = useNavigate();
     const [navbar, setNavbar] = useState(false);
+    const [qstList, setQstList] = useState([]);
     const getName = localStorage.getItem("name");
     const getPosition = localStorage.getItem("position");
 
@@ -16,6 +20,13 @@ const Review = () => {
         localStorage.clear();
         window.location.reload();
     }
+
+    useEffect(() => {
+        axios.get("http://localhost:8080/api/get").then((data) => {
+            console.log(data);
+            setQstList(data.data);
+        });
+    }, [])
     
     return(
         <div>  
@@ -72,17 +83,13 @@ const Review = () => {
                 <div>    
                     <div className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? "block" : "hidden"}`}>   
                         <div className="mt-3 space-y-2 lg:hidden md:inline-block md:hidden">
-                            <a href="#" className="inline-block w-full px-4 py-2 text-center text-white font-semibold rounded-md shadow hover:bg-gray-100" onClick={logout} style={{backgroundColor: "#F24C3D"}}>
-                                Logout
-                            </a>
+                            <LogoutButtonResponsive onClick={logout} />
                         </div>
                     </div>
                 </div>
 
                 <div className="hidden space-x-2 md:inline-block">
-                    <a href="#" className="px-4 py-2 text-white font-semibold rounded-md shadow hover:bg-gray-100" onClick={logout} style={{backgroundColor: "#F24C3D"}}>
-                        Logout
-                    </a>
+                    <LogoutButton onClick={logout} />
                 </div>
             </div>
         </nav>

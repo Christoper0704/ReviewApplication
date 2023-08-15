@@ -3,21 +3,60 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate, useNavigate  } from 'react-router-dom';
 
 import profileUser from '../images/profile.png';
-import modalForum from '../components/modalForum.js';
+import { HiComputerDesktop, HiCheckCircle, HiTrash } from 'react-icons/hi2';
+
+import { LogoutButton, LogoutButtonResponsive } from "../components/Button";
+
+import '../styles/main.css';
 
 const Main = () => {
     let navigate = useNavigate();
     const [navbar, setNavbar] = useState(false);
     const [showModalForum, setShowModalForum] = useState(false);
+    const [showSuccessMessage, setSuccessMessage] = useState(false);
+    const [forumName, setForumName] = useState('');
+    const [forumList, setForumList] = useState([]);
 
     const getRole = localStorage.getItem("role");
     const getName = localStorage.getItem("name");
     const getPosition = localStorage.getItem("position");
+    const storedForums = JSON.parse(localStorage.getItem('forum'));
+    
 
     const logout = () => {
         localStorage.clear();
         navigate('/');
     }
+
+    const openForumPage = () => {
+        navigate('/forum');
+    }
+
+    const addForum = (e) => {
+        e.preventDefault();
+        
+        forumList.push(forumName);
+        localStorage.setItem('forum', JSON.stringify(forumList));
+        setSuccessMessage(true);
+        setShowModalForum(false);
+    }
+
+    const renderForumList = storedForums ?
+    storedForums.map((item, index) =>  
+    <div key={index} className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
+        <button className="w-full no-underline text-black transform transition duration-500 hover:scale-110" onClick={openForumPage}>
+            <article className="overflow-hidden rounded-lg shadow-lg" style={{backgroundColor: "#F8F6F4"}}>
+                <header className="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <HiComputerDesktop className="w-5 h-5" />
+                    <h1 className="text-lg mx-auto">
+                        {item}
+                    </h1>
+                    <HiTrash className="w-5 h-5 hover:text-red-400" />
+                </header>
+            </article>
+        </button>
+    </div>) : <></>
+
 
             return(
                 <>
@@ -71,41 +110,59 @@ const Main = () => {
                         <div>    
                             <div className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? "block" : "hidden"}`}>   
                                 <div className="mt-3 space-y-2 lg:hidden md:inline-block md:hidden">
-                                    <a href="#" className="inline-block w-full px-4 py-2 text-center text-white font-semibold rounded-md shadow hover:bg-gray-100" onClick={logout} style={{backgroundColor: "#F24C3D"}}>
-                                        Logout
-                                    </a>
+                                    <LogoutButtonResponsive />
                                 </div>
                             </div>
                         </div>
         
                         <div className="hidden space-x-2 md:inline-block">
-                            <a href="#" className="px-4 py-2 text-white font-semibold rounded-md shadow hover:bg-gray-100" onClick={logout} style={{backgroundColor: "#F24C3D"}}>
-                                Logout
-                            </a>
+                            <LogoutButton />
                         </div>
                     </div>
                 </nav>  
                     <div className="container my-12 mx-auto px-4 md:px-12">
+                    {showSuccessMessage ? (
+                        <div
+                        className=
+                          "text-white w-3/4 justify-center mx-auto items-center px-6 py-4 border-0 rounded relative mb-4 bg-green-500 top-0 relative">
+                        <span className="text-xl inline-block mr-5 align-middle">
+                          <HiCheckCircle />
+                        </span>
+                        <span className="inline-block align-middle mr-8">
+                          <b className="capitalize">Success Add Forum</b>
+                        </span>
+                        <button
+                          className="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none"
+                          onClick={() => setSuccessMessage(false)}
+                        >
+                          <span>×</span>
+                        </button>
+                      </div>                        
+                    ) : null}
                         <p className="text-2xl font-semibold justify-center items-center mb-10">
                                 FORUM
                         </p>
                         <div className="flex flex-wrap -mx-1 lg:-mx-4">
                             
                             <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-                                <a className="no-underline text-black transform transition duration-500 hover:scale-110" href="/forum">
+                                <button className="w-full no-underline text-black transform transition duration-500 hover:scale-110" onClick={openForumPage}>
                                     <article className="overflow-hidden rounded-lg shadow-lg" style={{backgroundColor: "#F8F6F4"}}>
                                         <header className="flex items-center justify-between leading-tight p-2 md:p-4">
+                                            <HiComputerDesktop className="w-5 h-5" />
                                             <h1 className="text-lg mx-auto">
                                                 IT Support
                                             </h1>
+                                            <HiTrash className="w-5 h-5 hover:text-red-400" />
                                         </header>
                                     </article>
-                                </a>
+                                </button>
                             </div>
+
+                            {renderForumList}
 
                             {getRole === "manager" ?
                             <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-                                <a href="#" className="no-underline text-black transform transition duration-500 hover:scale-110" onClick={() => setShowModalForum(true)}>
+                                <button className="w-full no-underline text-black transform transition duration-500 hover:scale-110" onClick={() => setShowModalForum(true)}>
                                     <article className="overflow-hidden rounded-lg shadow-lg" style={{backgroundColor: "#F8F6F4"}}>
                                         <header className="flex items-center justify-between leading-tight p-2 md:p-4">
                                             <h1 className="text-lg mx-auto">
@@ -113,14 +170,14 @@ const Main = () => {
                                             </h1>
                                         </header>
                                     </article>
-                                </a>
+                                </button>
                             </div>
                             : <></>}
                         </div>
                     </div>
                     {showModalForum ? (
                         <>
-                            <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none" style={{backgroundColor: ""}}>
+                            <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
                                 <div className="relative w-auto my-6 mx-auto max-w-3xl">
                                     <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                                         <div className="flex items-start justify-between p-5 rounded-t">
@@ -135,11 +192,11 @@ const Main = () => {
                                         </div>
         
                                         <div class="px-6 lg:px-8">
-                                            <form class="space-y-6 mb-4" action="#">
+                                            <form class="space-y-6 mb-4" action="#" onSubmit={addForum}>
                                                 <div>
-                                                    <input type="type" name="forum" id="forum" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-500 dark:placeholder-black dark:text-black" placeholder="Input Forum Name" required />
+                                                    <input type="type" name="forum" id="forum" onChange={(e) => setForumName(e.target.value)} class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-500 dark:placeholder-black dark:text-black" placeholder="Input Forum Name" required />
                                                 </div>
-                                                <button type="submit" class="w-full text-white hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" style={{backgroundColor: "green"}} onClick={() => setShowModalForum(false)}>Add</button>
+                                                <button type="submit" class="w-full text-white hover:text-green-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" style={{backgroundColor: "green"}}>Add</button>
                                             </form>
                                         </div>  
                                     </div>
@@ -148,6 +205,7 @@ const Main = () => {
                             <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
                         </>
                     ) : null}
+                    
                 </>
                 
             );

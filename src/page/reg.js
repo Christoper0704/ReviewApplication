@@ -4,31 +4,29 @@ import { Link, Navigate, useNavigate  } from 'react-router-dom';
 import logo from '../images/logoCerberus.png';
 import '../styles/register.css';
 
-import { isEmail } from 'validator';
-
 import { HiEnvelope, HiKey, HiUser, HiIdentification } from 'react-icons/hi2';
 
-const required = (value) => {
-    if (!value) {
-      return (
-        <div className="alert alert-danger" role="alert">
-          This field is required!
-        </div>
-      );
-    }
-  };
+// const required = (value) => {
+//     if (!value) {
+//       return (
+//         <div className="alert alert-danger" role="alert">
+//           This field is required!
+//         </div>
+//       );
+//     }
+//   };
 
   
 
 const Reg = (props) => {
     let navigate = useNavigate();
 
-    const form = useRef();
-    const checkBtn = useRef();
+    // const form = useRef();
+    // const checkBtn = useRef();
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [loading, setLoading] = useState(false);
+    // const [email, setEmail] = useState("");
+    // const [password, setPassword] = useState("");
+    // const [loading, setLoading] = useState(false);
     const [inputFields, setInputFields] = useState({
         name: "",
         position: "",
@@ -37,12 +35,13 @@ const Reg = (props) => {
     });
     const [errors, setErrors] = useState({});
     const [submitting, setSubmitting] = useState(false);
+    const [photo, setPhoto] = useState();
     const validateValues = (inputValues) => {
         let errors = {};
-        if(inputValues.name.length == 0) {
+        if(inputValues.name.length === 0) {
             errors.name = "Name must be filled";
         }
-        if (inputValues.email.length == 0) {
+        if (inputValues.email.length === 0) {
           errors.email = "Email must be filled";
         }
         if (inputValues.password.length < 5) {
@@ -53,6 +52,10 @@ const Reg = (props) => {
     const handleChange = (e) => {
         setInputFields({ ...inputFields, [e.target.name]: e.target.value });
     };
+
+    const handleChangePhoto = (e) => {
+        setPhoto(URL.createObjectURL(e.target.files[0]));
+    }
 
     const submitRegister = (event) => {
         event.preventDefault();
@@ -87,45 +90,52 @@ const Reg = (props) => {
                         <span className="inline-flex items-center px-3 text-sm text-gray-900 rounded-l-md dark:text-black dark:border-gray-600">
                             <HiUser className="w-4 h-4" />
                         </span>
-                        <input type="text" id="name" name="name" value={inputFields.name} onChange={handleChange} placeholder="Input Name" className="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-white focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" required/>
-                        {errors.name ? (
-                            <p className="error">Name must be filled</p>
-                        ) : null}
+                        <input type="text" id="name" name="name" value={inputFields.name} onChange={handleChange} placeholder="Input Name" className="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-white focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2"/>
                     </div>
+                        {errors.name ? (
+                            <p className="error text-red-500">Name must be filled</p>
+                        ) : null}
                     <div class="relative mt-4 flex">
                         <span className="inline-flex items-center px-3 text-sm text-gray-900 rounded-l-md dark:text-black dark:border-gray-600">
                             <HiIdentification className="w-4 h-4" />
                         </span>
-                        <select class="w-5/6 px-4 py-2 mt-2 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-white focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" required>
+                        <select class="w-full px-4 py-2 mt-2 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-white focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
                             <option disabled={true} value="">
                             Select Position
                             </option>
                             <option value={inputFields.position} onChange={handleChange}>Junior IT Support</option>
                             <option value={inputFields.position} onChange={handleChange}>Senior IT Support</option>
-                            <option value={inputFields.position} onChange={handleChange}>Manager</option>
+                            <option value={inputFields.position} onChange={handleChange}>Junior Frontend</option>
+                            <option value={inputFields.position} onChange={handleChange}>Senior Frontend</option>
+                            <option value={inputFields.position} onChange={handleChange}>Junior Backend</option>
+                            <option value={inputFields.position} onChange={handleChange}>Senior Backend</option>
+                            <option value={inputFields.position} onChange={handleChange}>Manager IT Support</option>
+                            <option value={inputFields.position} onChange={handleChange}>Manager Frontend</option>
+                            <option value={inputFields.position} onChange={handleChange}>Manager Backend</option>
+                            <option value={inputFields.position} onChange={handleChange}>Direktur Utama</option>
                         </select>
                     </div>
                     <div className="relative pt-4 flex">
                         <span className="inline-flex items-center px-3 text-sm text-gray-900 rounded-l-md dark:text-black dark:border-gray-600">
                             <HiEnvelope className="w-4 h-4" />
                         </span>
-                        <input type="text" id="email" name="email" value={inputFields.email} onChange={handleChange} placeholder="Input Email" className="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-white focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" required/>
-                        {errors.email ? (
-                            <p className="error">Email must be filled</p>
-                        ) : null}
+                        <input type="text" id="email" name="email" value={inputFields.email} onChange={handleChange} placeholder="Input Email" className="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-white focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2"/>
                     </div>
+                    {errors.email ? (
+                            <p className="error text-red-500">Email must be filled</p>
+                        ) : null}
                     <div className="relative pt-4 flex">
                         <span className="inline-flex items-center px-3 text-sm text-gray-900 rounded-l-md dark:text-black dark:border-gray-600">
                             <HiKey className="w-4 h-4" />
                         </span>
-                        <input type="password" id="password" name="password" value={inputFields.password} onChange={handleChange} placeholder="Input Password" className="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-white focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" required/>
+                        <input type="password" id="password" name="password" value={inputFields.password} onChange={handleChange} placeholder="Input Password" className="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-white focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2"/>
                         
                     </div>
                     {errors.password ? (
-                            <p className="error">Password must be maximum at 5 characters</p>
+                            <p className="error text-red-500">Password must be maximum at 5 characters</p>
                         ) : null}
                     <div className="relative pt-4 flex">
-                        <button className="w-1/2 py-3 text-base transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blue-800" style={{backgroundColor: "#D2E9E9"}}>Upload Photo</button>
+                        <button type="file" onChange={handleChangePhoto} className="w-1/2 py-3 text-base transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blue-800" style={{backgroundColor: "#D2E9E9"}}>Upload Photo</button>
                         <span className="inline-flex items-center px-3 text-sm text-gray-900 rounded-l-md dark:text-black dark:border-gray-600">
                             Supported Format: PNG, JPG. Max Size: 2MB.
                         </span>

@@ -18,12 +18,16 @@ const required = (value) => {
     }
   };
 
+
 const Login = () => {
     let navigate = useNavigate();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [authenticated, setAuthenticated] = useState(localStorage.getItem(localStorage.getItem("authenticated") || false));
+    const [validateEmail, setValidateEmail] = useState(true);
+    const [validatePass, setValidatePass] = useState(false);
+    const [errorPassword, setErrorPassword] = useState('');
     const users = Users;
 
     const getEmail = localStorage.getItem("email");
@@ -32,8 +36,22 @@ const Login = () => {
     const submitLogin = (e) => {
         e.preventDefault();
         const account = users.find((user) => user.email === email);
+        if(!account)
+        {
+            setValidateEmail(false);
+        }
+        if(account)
+        {
+            setValidateEmail(true);
+        }
+        if(account && account.password !== password)
+        {
+            setErrorPassword(`Password doesn't match our records`);
+        }
+        
         if(account && account.password === password)
         {
+            setValidatePass(true);
             localStorage.setItem("id", account.id);
             localStorage.setItem("email", account.email);
             localStorage.setItem("password", account.password);
@@ -43,6 +61,7 @@ const Login = () => {
             navigate('/main');
         }
     }
+    
 
     return(
         <>
@@ -60,13 +79,21 @@ const Login = () => {
                             <HiEnvelope className="w-4 h-4" />
                         </span>
                         <input type="text" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Input Email" className="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-white focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" required/>
+                       
                     </div>
+                    {!validateEmail ?
+                        <span class="text-sm text-red-600 relative px-3"> Email doesn't match our records. </span>
+                        : <></> }
                     <div className="relative pt-4 flex">
                         <span className="inline-flex items-center px-3 text-sm text-gray-900 rounded-l-md dark:text-black dark:border-gray-600">
                             <HiKey className="w-4 h-4" />
                         </span>
                         <input type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)} placeholder="Input Password" className="w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-white focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" required/>
+                        
                     </div> 
+                    {!validatePass ?
+                        <span class="text-sm text-red-600 px-3 relative"> {errorPassword} </span>
+                        : <></> }
                     <div className="relative pt-4 text-md text-slate-500 hover:text-blue-600">
                         <a href="/">Forgot password? Click here.</a>
                     </div>

@@ -13,4 +13,12 @@ export const Users = [{
     role: "manager",
     name: "Rudy Santoso",
     position: "Manager ITS",
+},
+{
+    id: 3,
+    email: "kate@email.com",
+    password: "12345",
+    role: "user",
+    name: "Kate Susianti",
+    position: "Senior ITS"
 }]
